@@ -15,7 +15,9 @@ class GroupAdmin(admin.ModelAdmin):
 
     @admin.display(description='Описание (кратко)')
     def description_short(self, obj):
-        return obj.description[:50] + '...' if len(obj.description) > 50 else obj.description
+        return (
+            obj.description[:50]
+            + '...' if len(obj.description) > 50 else obj.description)
 
 
 @admin.register(Post)
