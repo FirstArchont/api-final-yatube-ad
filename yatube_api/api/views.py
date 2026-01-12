@@ -5,13 +5,13 @@ from posts.models import Post, Group, Comment, Follow
 from rest_framework.response import Response
 from posts.serializers import (
     PostSerializer, GroupSerializer, CommentSerializer, FollowSerializer)
-# from .pagination import PostLimitOffsetPagination
+from .pagination import PostLimitOffsetPagination
 
 
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    # pagination_class = PostLimitOffsetPagination
+    pagination_class = PostLimitOffsetPagination
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
